@@ -118,9 +118,9 @@ export const ApplicationDetails: FC = memo(() => {
             <CardContainer gap="2rem" flexWrap="wrap">
                 {isLoading && <Loader />}
                 {!isLoading &&
-                    filteredApplicationDetails.map((item) => (
+                    filteredApplicationDetails.map((item, index) => (
                         <Card
-                            key={item.Date.toLocaleDateString('en-GB')}
+                            key={`${item.Date.toLocaleDateString('en-GB')}_${index}`}
                             flexDirection="column"
                             gap="1rem"
                             alignItems="start">
