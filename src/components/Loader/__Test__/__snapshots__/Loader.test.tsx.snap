@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader should render properly 1`] = `
+.c0 {
+  width: 10rem;
+  height: auto;
+  margin: auto;
+  animation: gOaCMp infinite 20s linear;
+}
+
+<div>
+  <img
+    class="c0"
+    src="/reactLogo.svg"
+    title="loader"
+  />
+</div>
+`;

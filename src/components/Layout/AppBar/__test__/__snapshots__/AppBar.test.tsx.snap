@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBar should render properly 1`] = `
+.c2 {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.c4 {
+  margin: 0;
+  color: inherit;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0rem;
+  line-height: 2.2rem;
+  text-align: initial;
+  display: inline-block;
+}
+
+.c0 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  background-color: #008085;
+  padding: 1rem 0;
+}
+
+.c1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  color: #fff;
+}
+
+.c1 a:hover {
+  color: #495057;
+}
+
+.c3 {
+  width: 2.5rem;
+  height: auto;
+}
+
+<div>
+  <header
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        alignitems="center"
+        class="c2"
+        gap="2rem"
+      >
+        <img
+          class="c3"
+          src="/vite.svg"
+        />
+        <span
+          class="c4"
+          textalign="initial"
+          textcolor="inherit"
+        >
+          React JWT Demo
+        </span>
+      </div>
+    </div>
+  </header>
+</div>
+`;
