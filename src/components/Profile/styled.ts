@@ -1,4 +1,4 @@
-import { StyledBox } from '@pages/Auth/styled';
+import { StyledBox } from '@components/Auth/styled';
 import { theme } from '@theme';
 import { styled } from '@utils';
 

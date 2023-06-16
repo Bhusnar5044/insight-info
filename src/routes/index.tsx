@@ -1,10 +1,9 @@
+import ApplicationDetails from '@components/ApplicationDetails';
+import Auth from '@components/Auth';
+import Dashboard from '@components/Dashboard';
 import ContainerLoader from '@components/Loader';
-import Auth from '@pages/Auth';
-// import Dashboard from '@pages/Dashboard';
-import { ApplicationDetails } from '@components/ApplicationDetails/ApplicationDetails';
+import Profile from '@components/Profile';
 import { routeConstant } from '@constant/routeConstant';
-import Dashboard from '@pages/Dashboard';
-import Profile from '@pages/Profile';
 import { FC, Suspense } from 'react';
 import { Route, Routes as RoutesWrapper } from 'react-router-dom';
 import ProtectedRoutes from './ProtectedRoutes';

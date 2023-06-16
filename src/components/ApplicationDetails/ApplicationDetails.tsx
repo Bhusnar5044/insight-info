@@ -5,6 +5,7 @@ import { fetch } from '@utils';
 import { ChangeEvent, FC, memo, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Controls } from './Controls/Controls';
+import { DateRange } from './Controls/types';
 import { Card, CardContainer } from './styled';
 import { IApplicationDetails } from './types';
 
@@ -15,6 +16,7 @@ export const ApplicationDetails: FC = memo(() => {
     const [filteredApplicationDetails, setFilteredApplicationDetails] =
         useState<IApplicationDetails[]>(applicationDetails);
     const [sort, setSort] = useState('');
+    const [dateRange, setDateRange] = useState<DateRange>([new Date(), new Date()]);
 
     const getApplicationDetails = useCallback(async () => {
         setIsLoading(true);
@@ -36,6 +38,11 @@ export const ApplicationDetails: FC = memo(() => {
             }
             setApplicationDetails(data);
             setFilteredApplicationDetails(data);
+            if (data.length) {
+                const sortedData = [...data];
+                sortedData.sort((a, b) => a.Date.getTime() - b.Date.getTime());
+                setDateRange([sortedData[0].Date, sortedData[data.length - 1].Date]);
+            }
         }
         if (error) console.log(error);
 
@@ -77,6 +84,22 @@ export const ApplicationDetails: FC = memo(() => {
         [applicationDetails],
     );
 
+    const handleDateChange = useCallback(
+        (value: DateRange) => {
+            setDateRange(value);
+            const [startDate, endDate] = value as Date[];
+            console.log({ startDate, endDate });
+            const sortedList = [...applicationDetails];
+            sortedList
+                .sort((a, b) => a.Date.getTime() - b.Date.getTime())
+                .filter(
+                    (item) => item.Date.getTime() >= startDate.getTime() && item.Date.getTime() <= endDate.getTime(),
+                );
+            setFilteredApplicationDetails(sortedList);
+        },
+        [applicationDetails],
+    );
+
     useEffect(() => {
         getApplicationDetails();
     }, [getApplicationDetails]);
@@ -85,7 +108,13 @@ export const ApplicationDetails: FC = memo(() => {
             <Text textVariant="h3" textColor="#fff" textAlign="center">
                 {groupName}
             </Text>
-            <Controls onSearch={onSearch} onSortChange={onSortChange} sort={sort} />
+            <Controls
+                onSearch={onSearch}
+                onSortChange={onSortChange}
+                sort={sort}
+                handleDateChange={handleDateChange}
+                dateRange={dateRange}
+            />
             <CardContainer gap="2rem" flexWrap="wrap">
                 {isLoading && <Loader />}
                 {!isLoading &&

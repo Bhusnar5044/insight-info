@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 export const Container = styled(Box)`
     width: 90%;
     min-height: 90vh;
-    margin: 2rem 0;
+    margin: 2rem auto;
 `;
 
 export const StyledCardContainer = styled(Box)`

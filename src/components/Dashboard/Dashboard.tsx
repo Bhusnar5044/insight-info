@@ -16,7 +16,7 @@ const TabsContent = [
         content: <Resources />,
     },
 ];
-export const DashboardContent: FC = memo(() => {
+export const Dashboard: FC = memo(() => {
     return (
         <Container flexDirection="column">
             <Tabs data={TabsContent} />

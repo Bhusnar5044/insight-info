@@ -18,7 +18,6 @@
             "@components": ["components"],
             "@components/*": ["components/*"],
             "@assets/*": ["assets/*"],
-            "@pages/*": ["pages/*"],
             "@routes": ["routes"],
             "@routes/*": ["routes/*"],
             "@constant": ["constant"],
