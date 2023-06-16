@@ -13,7 +13,7 @@ export const AppBar: FC = memo(() => {
             <HeaderContent>
                 <Box gap="2rem" alignItems="center">
                     <Logo src="/vite.svg" />
-                    <Text>React JWT Demo</Text>
+                    <Text>Insight-info</Text>
                 </Box>
                 {tokens?.access_token && (
                     <Box gap="2rem" alignItems="center">
