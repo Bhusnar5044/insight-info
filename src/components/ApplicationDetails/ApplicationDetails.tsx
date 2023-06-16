@@ -2,7 +2,7 @@ import { Loader } from '@components/Loader/Loader';
 import { Box, Text } from '@components/common';
 import { urls } from '@constant/urls';
 import { fetch } from '@utils';
-import { FC, memo, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, FC, memo, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Controls } from './Controls/Controls';
 import { Card, CardContainer } from './styled';
@@ -14,17 +14,28 @@ export const ApplicationDetails: FC = memo(() => {
     const [applicationDetails, setApplicationDetails] = useState<IApplicationDetails[]>([]);
     const [filteredApplicationDetails, setFilteredApplicationDetails] =
         useState<IApplicationDetails[]>(applicationDetails);
+    const [sort, setSort] = useState('');
 
-    const getApplications = useCallback(async () => {
+    const getApplicationDetails = useCallback(async () => {
         setIsLoading(true);
         let url = '';
         if (category === 'applications') url = `${urls.applications}/${groupName}`;
         else if (category === 'resources') url = `${urls.resources}/${groupName}`;
 
         const { response, error } = await fetch({ url });
+        const data = response?.data;
         if (response?.data) {
-            setApplicationDetails(response?.data);
-            setFilteredApplicationDetails(response?.data);
+            for (const item of data) {
+                const dateArr = item.Date.split('/');
+                const year = parseFloat(dateArr[2]);
+                const month = parseFloat(dateArr[1]) - 1;
+                const day = parseFloat(dateArr[0]);
+                const newDate = new Date(year, month, day);
+                // Update the object
+                item.Date = newDate;
+            }
+            setApplicationDetails(data);
+            setFilteredApplicationDetails(data);
         }
         if (error) console.log(error);
 
@@ -34,33 +45,58 @@ export const ApplicationDetails: FC = memo(() => {
     const onSearch = (value: string) => {
         const search = value.toLowerCase();
         setFilteredApplicationDetails(
-            applicationDetails.filter(
-                (item: IApplicationDetails) =>
+            applicationDetails.filter((item: IApplicationDetails) => {
+                if (
                     item.Cost.includes(search) ||
                     item.UnitOfMeasure.includes(search) ||
-                    item.ServiceName.includes(search) ||
-                    item.Location.includes(search) ||
-                    item.Tags.environment.includes(search),
-            ),
+                    item.ServiceName.toLowerCase().includes(search) ||
+                    item.Location.toLowerCase().includes(search) ||
+                    item.Tags.environment.toLowerCase().includes(search)
+                ) {
+                    console.log({ search, item });
+                    return true;
+                }
+                return false;
+            }),
         );
     };
 
+    const onSortChange = useCallback(
+        (e: ChangeEvent<HTMLSelectElement>) => {
+            const value = e.target.value;
+            console.log(value);
+            setSort(value);
+            const sortedList = [...applicationDetails];
+            if (value === 'cost-DSC') sortedList.sort((a, b) => b.Cost.localeCompare(a.Cost));
+            else if (value === 'cost-ASC') sortedList.sort((a, b) => b.Cost.localeCompare(a.Cost)).reverse();
+            else if (value === 'date-DSC') {
+                sortedList.sort((a, b) => b.Date.getTime() - a.Date.getTime());
+            } else if (value === 'date-ASC') sortedList.sort((a, b) => a.Date.getTime() - b.Date.getTime());
+            setFilteredApplicationDetails(sortedList);
+        },
+        [applicationDetails],
+    );
+
     useEffect(() => {
-        getApplications();
-    }, [getApplications]);
+        getApplicationDetails();
+    }, [getApplicationDetails]);
     return (
         <CardContainer flexDirection="column" gap="2rem">
             <Text textVariant="h3" textColor="#fff" textAlign="center">
                 {groupName}
             </Text>
-            <Controls onSearch={onSearch} />
+            <Controls onSearch={onSearch} onSortChange={onSortChange} sort={sort} />
             <CardContainer gap="2rem" flexWrap="wrap">
                 {isLoading && <Loader />}
                 {!isLoading &&
                     filteredApplicationDetails.map((item) => (
-                        <Card key={item.Date.toString()} flexDirection="column" gap="1rem" alignItems="start">
+                        <Card
+                            key={item.Date.toLocaleDateString('en-GB')}
+                            flexDirection="column"
+                            gap="1rem"
+                            alignItems="start">
                             <Text textVariant="body3">
-                                <strong>Date:</strong> {item.Date.toString()}
+                                <strong>Date:</strong> {item.Date.toLocaleDateString('en-GB')}
                             </Text>
                             <Text textVariant="body3">
                                 <strong>Cost:</strong> {item.Cost}
@@ -94,9 +130,3 @@ export const ApplicationDetails: FC = memo(() => {
         </CardContainer>
     );
 });
-
-// "Tags": {
-//     "app-name": "Macao",
-//     "environment": "Production",
-//     "business-unit": "SolutionOps"
-//   },

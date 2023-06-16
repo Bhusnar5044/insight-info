@@ -1,7 +1,7 @@
 export interface IApplicationDetails {
     ConsumedQuantity: string;
     Cost: string;
-    Date: string;
+    Date: Date;
     InstanceId: string;
     MeterCategory: string;
     ResourceGroup: string;
