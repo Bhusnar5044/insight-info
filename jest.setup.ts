@@ -27,6 +27,10 @@ beforeAll(() => {
     };
     const { getComputedStyle } = window;
     window.getComputedStyle = (elt) => getComputedStyle(elt);
+    localStorage.setItem(
+        'user',
+        JSON.stringify({ tokens: { access_token: 'dummyToken', refresh_token: 'dummyToken' } }),
+    );
 });
 
 afterAll(() => {
