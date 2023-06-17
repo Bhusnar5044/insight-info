@@ -33,7 +33,6 @@ export const ApplicationDetails: FC = memo(() => {
                 const month = parseFloat(dateArr[1]) - 1;
                 const day = parseFloat(dateArr[0]);
                 const newDate = new Date(year, month, day);
-                // Update the object
                 item.Date = newDate;
             }
             setApplicationDetails(data);
@@ -52,26 +51,20 @@ export const ApplicationDetails: FC = memo(() => {
     const onSearch = (value: string) => {
         const search = value.toLowerCase();
         setFilteredApplicationDetails(
-            applicationDetails.filter((item: IApplicationDetails) => {
-                if (
+            applicationDetails.filter(
+                (item: IApplicationDetails) =>
                     item.Cost.includes(search) ||
                     item.UnitOfMeasure.includes(search) ||
                     item.ServiceName.toLowerCase().includes(search) ||
                     item.Location.toLowerCase().includes(search) ||
-                    item.Tags.environment.toLowerCase().includes(search)
-                ) {
-                    console.log({ search, item });
-                    return true;
-                }
-                return false;
-            }),
+                    item.Tags.environment.toLowerCase().includes(search),
+            ),
         );
     };
 
     const onSortChange = useCallback(
         (e: ChangeEvent<HTMLSelectElement>) => {
             const value = e.target.value;
-            console.log(value);
             setSort(value);
             const sortedList = [...applicationDetails];
             if (value === 'cost-DSC') sortedList.sort((a, b) => b.Cost.localeCompare(a.Cost));
@@ -88,14 +81,15 @@ export const ApplicationDetails: FC = memo(() => {
         (value: DateRange) => {
             setDateRange(value);
             const [startDate, endDate] = value as Date[];
-            console.log({ startDate, endDate });
             const sortedList = [...applicationDetails];
-            sortedList
-                .sort((a, b) => a.Date.getTime() - b.Date.getTime())
-                .filter(
-                    (item) => item.Date.getTime() >= startDate.getTime() && item.Date.getTime() <= endDate.getTime(),
-                );
-            setFilteredApplicationDetails(sortedList);
+            setFilteredApplicationDetails(
+                sortedList
+                    .sort((a, b) => a.Date.getTime() - b.Date.getTime())
+                    .filter(
+                        (item) =>
+                            item.Date.getTime() >= startDate.getTime() && item.Date.getTime() <= endDate.getTime(),
+                    ),
+            );
         },
         [applicationDetails],
     );
@@ -103,6 +97,7 @@ export const ApplicationDetails: FC = memo(() => {
     useEffect(() => {
         getApplicationDetails();
     }, [getApplicationDetails]);
+
     return (
         <CardContainer flexDirection="column" gap="2rem">
             <Text textVariant="h3" textColor="#fff" textAlign="center">
@@ -115,7 +110,7 @@ export const ApplicationDetails: FC = memo(() => {
                 handleDateChange={handleDateChange}
                 dateRange={dateRange}
             />
-            <CardContainer gap="2rem" flexWrap="wrap">
+            <CardContainer gap="2rem" flexWrap="wrap" justifyContent="center">
                 {isLoading && <Loader />}
                 {!isLoading &&
                     filteredApplicationDetails.map((item, index) => (
