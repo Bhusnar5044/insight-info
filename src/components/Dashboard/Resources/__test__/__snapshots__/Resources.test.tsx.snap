@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Resources should render properly 1`] = `
+.c6 {
+  width: 10rem;
+  height: auto;
+  margin: auto;
+  animation: gOaCMp infinite 20s linear;
+}
+
+.c0 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.c5 {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.c4 {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  background: #ffff;
+  box-shadow: inset 0 -1px 0 rgba(#212529, 0.3);
+  color: #212529;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.c2 {
+  position: relative;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 23rem;
+  background-color: #ffff;
+}
+
+.c2 .focus-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(#6c757d, 0.05);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.c2 .c3 {
+  width: 20rem;
+}
+
+.c2 img {
+  cursor: pointer;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.c1 {
+  margin: 2rem 0;
+}
+
+<div>
+  <div
+    class="c0 c1"
+    flexdirection="column"
+    gap="1rem"
+  >
+    <div
+      class="c2"
+      for="searchInput"
+    >
+      <input
+        class="c3 c4"
+        id="searchInput"
+        placeholder="Search"
+        type="text"
+        value=""
+      />
+      <div
+        class="c5"
+        gap="0.5rem"
+      >
+        <img
+          alt="search-icon"
+        />
+      </div>
+    </div>
+    <img
+      class="c6"
+      title="loader"
+    />
+  </div>
+</div>
+`;
