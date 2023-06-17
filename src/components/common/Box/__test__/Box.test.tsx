@@ -18,13 +18,6 @@ describe('Box', () => {
                 dummy content
             </Box>,
         );
-        expect(screen.getByText(/dummy content/i)).toHaveStyleRule(
-            'display',
-            'flex',
-            'flex-direction',
-            'column',
-            'align-items',
-            'center',
-        );
+        expect(screen.getByText(/dummy content/i)).toHaveStyleRule('flex-direction', 'column', 'align-items');
     });
 });

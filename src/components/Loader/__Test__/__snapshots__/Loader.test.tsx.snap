@@ -11,7 +11,6 @@ exports[`Loader should render properly 1`] = `
 <div>
   <img
     class="c0"
-    src="/reactLogo.svg"
     title="loader"
   />
 </div>

@@ -8,24 +8,14 @@ exports[`Profile should render properly 1`] = `
   gap: 2rem;
 }
 
-.c2 {
+.c1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
 
-.c1 {
-  margin: 0;
-  color: inherit;
-  font-size: 2.4rem;
-  font-weight: 400;
-  letter-spacing: -0.04rem;
-  line-height: 3.2rem;
-  text-align: center;
-}
-
-.c6 {
+.c5 {
   margin: 0;
   color: #fff;
   font-size: 1.4rem;
@@ -36,20 +26,20 @@ exports[`Profile should render properly 1`] = `
   display: inline-block;
 }
 
-.c3 {
+.c2 {
   width: 80%;
   margin: auto;
   padding: 5rem;
   border-radius: 2rem;
-  background-color: #1976d2;
+  background-color: #463366;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.c4 {
+.c3 {
   width: 40%;
 }
 
-.c5 {
+.c4 {
   border-radius: 50%;
   width: 15rem;
   height: 15rem;
@@ -57,7 +47,7 @@ exports[`Profile should render properly 1`] = `
 }
 
 @media only screen and (min-width: 1200px) {
-  .c3 {
+  .c2 {
     width: 40%;
   }
 }
@@ -70,27 +60,19 @@ exports[`Profile should render properly 1`] = `
     gap="2rem"
     justifycontent="center"
   >
-    <h3
-      class="c1"
-      textalign="center"
-      textcolor="inherit"
-      textvariant="h3"
-    >
-      Profile Page
-    </h3>
     <div
       alignitems="center"
-      class="c2 c3 c4"
+      class="c1 c2 c3"
       display="flex"
       flexdirection="column"
       gap="2rem"
     >
       <img
         alt="avatar"
-        class="c5"
+        class="c4"
       />
       <span
-        class="c6"
+        class="c5"
         textalign="initial"
         textcolor="#fff"
       >
@@ -100,7 +82,7 @@ exports[`Profile should render properly 1`] = `
          
       </span>
       <span
-        class="c6"
+        class="c5"
         textalign="initial"
         textcolor="#fff"
       >
@@ -110,7 +92,7 @@ exports[`Profile should render properly 1`] = `
          
       </span>
       <span
-        class="c6"
+        class="c5"
         textalign="initial"
         textcolor="#fff"
       >

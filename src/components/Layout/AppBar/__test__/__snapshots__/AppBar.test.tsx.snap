@@ -66,7 +66,7 @@ exports[`AppBar should render properly 1`] = `
           textalign="initial"
           textcolor="inherit"
         >
-          React JWT Demo
+          Insight-info
         </span>
       </div>
     </div>
