@@ -1,0 +1,36 @@
+[
+    {
+        "ConsumedQuantity": "2",
+        "Cost": "21.5424",
+        "Date": "29/11/2020",
+        "InstanceId": "dummy",
+        "MeterCategory": "dummy category",
+        "ResourceGroup": "dummy group",
+        "ResourceLocation": "dummy location",
+        "Tags": {
+            "app-name": "dummy app name",
+            "environment": "test",
+            "business-unit": "dummy business unit"
+        },
+        "UnitOfMeasure": "1 Hour",
+        "Location": "dummy location",
+        "ServiceName": "dummy Service name"
+    },
+    {
+        "ConsumedQuantity": "3",
+        "Cost": "21.5424",
+        "Date": "30/11/2020",
+        "InstanceId": "dummy",
+        "MeterCategory": "dummy category",
+        "ResourceGroup": "dummy group",
+        "ResourceLocation": "dummy location",
+        "Tags": {
+            "app-name": "dummy app name",
+            "environment": "production",
+            "business-unit": "dummy business unit"
+        },
+        "UnitOfMeasure": "1 Hour",
+        "Location": "dummy location",
+        "ServiceName": "dummy Service name"
+    }
+]
