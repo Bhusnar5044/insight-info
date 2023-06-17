@@ -208,6 +208,7 @@ exports[`Dashboard should render properly 1`] = `
               class="c11 c12"
               id="searchInput"
               placeholder="Search"
+              title="searchBox"
               type="text"
               value=""
             />

@@ -85,6 +85,7 @@ exports[`Applications should render properly 1`] = `
         class="c3 c4"
         id="searchInput"
         placeholder="Search"
+        title="searchBox"
         type="text"
         value=""
       />

@@ -51,6 +51,7 @@ export const SearchBox: FC<Props> = memo(
                     ref={ref}
                     type="text"
                     id="searchInput"
+                    title="searchBox"
                     placeholder="&nbsp;"
                     {...props}
                     onChange={onChange}
