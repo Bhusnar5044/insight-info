@@ -37,6 +37,7 @@ exports[`Profile should render properly 1`] = `
 
 .c3 {
   width: 40%;
+  justify-content: center;
 }
 
 .c4 {

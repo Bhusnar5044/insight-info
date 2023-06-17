@@ -4,6 +4,7 @@ import { styled } from '@utils';
 
 export const CardBox = styled(StyledBox)`
     width: 40%;
+    justify-content: center;
 `;
 
 export const StyledAvatar = styled.img`
