@@ -1,5 +1,6 @@
 import Loader from '@components/Loader';
-import { SearchBox } from '@components/common';
+import { SearchBox, Text } from '@components/common';
+import { emptyStateMessages } from '@constant/constantStrings';
 import { urls } from '@constant/urls';
 import { fetch } from '@utils';
 import { FC, memo, useCallback, useEffect, useState } from 'react';
@@ -35,12 +36,13 @@ export const Resources: FC = memo(() => {
             <SearchBox onSearch={onSearch} placeholder="Search" />
             {isLoading && <Loader />}
             {!isLoading &&
-                filteredResources.length &&
+                !!filteredResources.length &&
                 filteredResources.map((resource, index) => (
                     <StyledCard key={`${resource}-${index}`} to={`/resources/${resource}`}>
                         {resource}
                     </StyledCard>
                 ))}
+            {!isLoading && !filteredResources.length && <Text>{emptyStateMessages.resources}</Text>}
         </StyledCardContainer>
     );
 });

@@ -1,5 +1,6 @@
 import { Loader } from '@components/Loader/Loader';
 import { Box, Text } from '@components/common';
+import { emptyStateMessages } from '@constant/constantStrings';
 import { urls } from '@constant/urls';
 import { fetch } from '@utils';
 import { ChangeEvent, FC, memo, useCallback, useEffect, useState } from 'react';
@@ -113,6 +114,7 @@ export const ApplicationDetails: FC = memo(() => {
             <CardContainer gap="2rem" flexWrap="wrap" justifyContent="center">
                 {isLoading && <Loader />}
                 {!isLoading &&
+                    !!filteredApplicationDetails.length &&
                     filteredApplicationDetails.map((item, index) => (
                         <Card
                             key={`${item.Date.toLocaleDateString('en-GB')}_${index}`}
@@ -150,6 +152,9 @@ export const ApplicationDetails: FC = memo(() => {
                             </Box>
                         </Card>
                     ))}
+                {!isLoading && !filteredApplicationDetails.length && (
+                    <Text textColor="#fff">{emptyStateMessages.noResultFound}</Text>
+                )}
             </CardContainer>
         </CardContainer>
     );
